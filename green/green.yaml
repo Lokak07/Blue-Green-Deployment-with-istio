@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-generator-green
+  namespace: green-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random-generator
+      version: green
+  template:
+    metadata:
+      labels:
+        app: random-generator
+        version: green
+    spec:
+      containers:
+      - image: httpd
+        name: random-generator
+        ports:
+        - containerPort: 80

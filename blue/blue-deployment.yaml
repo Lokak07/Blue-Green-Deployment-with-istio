@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-generator-blue
+  namespace: blue-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random-generator
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: random-generator
+        version: blue
+    spec:
+      containers:
+      - image: nginx
+        name: random-generator
+        ports:
+        - containerPort: 8080
